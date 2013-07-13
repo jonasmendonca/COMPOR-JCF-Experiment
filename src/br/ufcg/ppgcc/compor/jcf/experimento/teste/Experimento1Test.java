@@ -10,11 +10,9 @@ import org.junit.Test;
 
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.Dependente;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.Endereco;
-<<<<<<< HEAD
+
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.Fachada;
-=======
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.ExcecaoImpostoDeRenda;
->>>>>>> etapa2
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.FachadaExperimento;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.FontePagadora;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.Resultado;
