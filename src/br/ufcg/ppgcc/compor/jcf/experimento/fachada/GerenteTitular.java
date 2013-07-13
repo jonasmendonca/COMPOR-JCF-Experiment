@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import br.ufcg.ppgcc.compor.jcf.experimento.util.CalculoImpostoRenda;
+import br.ufcg.ppgcc.compor.jcf.experimento.util.Validacao;
 
 public class GerenteTitular {
 
@@ -22,6 +23,22 @@ public class GerenteTitular {
 		
 	}
 	public void criarTitular(Titular titular){
+		Validacao valida = new Validacao();
+		boolean result = valida.obrigatorio(titular.getNome());
+		if(result == false){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		if(this.titulares.contains(titular)){
+			throw new ExcecaoImpostoDeRenda("Campo já existente");
+		}
+		if(valida.cpf(titular.getCpf()) == false){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		
+		if(titular.cpf == "000000000000"){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		
 		this.titulares.add(titular);
 		this.fontespagadoras.put(titular, new ArrayList<FontePagadora>());
 		this.dependentes.put(titular, new ArrayList<Dependente>());
@@ -49,6 +66,10 @@ public class GerenteTitular {
 		Resultado resultado = new Resultado();
 		resultado.setImpostoDevido(resultado2);
 		return resultado;
+		
+	}
+
+	public void listarGastosDedutiveis(Titular titular, Pessoa realizador) {
 		
 	}
 	

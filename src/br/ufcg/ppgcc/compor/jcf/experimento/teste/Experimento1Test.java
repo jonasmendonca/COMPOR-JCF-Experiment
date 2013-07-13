@@ -19,6 +19,7 @@ import br.ufcg.ppgcc.compor.jcf.experimento.fachada.Resultado;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.Titular;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.GastoDedutivel;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.GastoDedutivel.TipoGasto;
+import br.ufcg.ppgcc.compor.jcf.experimento.util.Validacao;
 
 public class Experimento1Test {
 
@@ -630,6 +631,16 @@ public class Experimento1Test {
 
 	private FontePagadora criarFontePagadora(String nome, String cpfCnpj,
 			double rendimentoRecebidos) {
+		Validacao valida = new Validacao();
+		if(valida.obrigatorio(nome) == false){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		if(valida.obrigatorio(cpfCnpj) == false){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		if(valida.cnpj(cpfCnpj) == false){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
 		FontePagadora fonte = new FontePagadora();
 		fonte.setNome(nome);
 		fonte.setCpfCnpj(cpfCnpj);
@@ -667,6 +678,21 @@ public class Experimento1Test {
 	private Dependente criarDependente(String cpf, Calendar dataNascimento,
 			String nome, int tipo) {
 		Dependente dependente = new Dependente();
+		Validacao valida = new Validacao();
+		
+		if(valida.obrigatorio(cpf) == false){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		if(valida.obrigatorio(nome) == false){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		if(valida.cpf(cpf)){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		if(cpf.length()<5){
+			throw new ExcecaoImpostoDeRenda("Campo invalido");
+		}
+		
 		dependente.setCpf(cpf);
 		dependente.setDataNascimento(dataNascimento);
 		dependente.setNome(nome);

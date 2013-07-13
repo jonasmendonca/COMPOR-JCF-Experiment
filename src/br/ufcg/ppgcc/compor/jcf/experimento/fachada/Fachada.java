@@ -10,7 +10,9 @@ public class Fachada implements FachadaExperimento{
 	
 	@Override
 	public void criarNovoTitular(Titular titular) {
+		
 		this.GerenteTitular.criarTitular(titular);
+		
 		//this.GerenteTitular.criarFontePagadora(titular);
 	}
 
@@ -56,7 +58,7 @@ public class Fachada implements FachadaExperimento{
 	@Override
 	public List<GastoDedutivel> listarGastosDedutiveis(Titular titular,
 			Pessoa realizador) {
-		// TODO Auto-generated method stub
+		//this.GerenteTitular.listarGastosDedutiveis(titular, realizador);
 		return null;
 	}
 
